@@ -184,10 +184,9 @@ class WoZaiXiaoYuanPuncher:
         notifyTime = utils.getCurrentTime()
         notifyResult = self.getResult()
         notifySeq = self.getSeq()
-        if os.environ.get('Div_Server'):
+        if os.environ.get('Swich_Server_Push'):
             # 自己的Server推送
-            notifyToken = os.environ['Div_Server']
-            url = "https://api.htm.fun/api/Wechat/text_card/?corpid={}&description=打卡结果:{}</br>点击卡片进入打卡项目&title=⏰ 我在校园打卡结果通知&url=https://github.com/1802024110/WoZaiXiaoYuanPuncher-Actions#step2-%E9%85%8D%E7%BD%AE%E6%89%93%E5%8D%A1%E5%8F%82%E6%95%B0".format(notifyToken,notifyResult)
+            url = "https://api.htm.fun/api/Wechat/text_card/?corpid=wwb330a036235c91ea&corpsecret=bpKk0puHo__K2WM2C4SDxZFRDOfxgFJnvW_vQy6HmhA&agentid=1000002&description=打卡结果:{}</br>点击卡片进入打卡项目&title=⏰ 我在校园打卡结果通知&url=https://github.com/1802024110/WoZaiXiaoYuanPuncher-Actions#step2-%E9%85%8D%E7%BD%AE%E6%89%93%E5%8D%A1%E5%8F%82%E6%95%B0".format(notifyToken,notifyResult)
             requests.get(url)
         if os.environ.get('SCT_KEY'):
             # serverchan 推送
