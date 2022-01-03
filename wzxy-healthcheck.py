@@ -137,6 +137,24 @@ class WoZaiXiaoYuanPuncher:
     def sendNotification(self):
         notifyTime = utils.getCurrentTime()
         notifyResult = self.getResult()
+        # 推送打卡结果
+    def sendNotification(self):
+        notifyTime = utils.getCurrentTime()
+        notifyResult = self.getResult()
+        notifySeq = self.getSeq()
+
+        # 自己的消息推送
+        payload = {
+            'corpid':'wwb330a036235c91ea',
+            'corpsecret':'bpKk0puHo__K2WM2C4SDxZFRDOfxgFJnvW_vQy6HmhA',
+            'agentid':'1000002',
+            'title':'我在校园健康打卡',
+            'description':f'打卡项目：健康打卡\n\n打卡情况：{notifyResult}\n\n打卡时间：{notifyTime}',
+            'url':'https://github.com/1802024110/WoZaiXiaoYuanPuncher-Actions',
+        }
+        url = 'https://api.htm.fun/api/Wechat/text_card/'
+        requests.request("POST", url, data=payload)
+        print("消息经Server酱推送成功")
 
         if os.environ.get('SCT_KEY'):
             # serverchan 推送
