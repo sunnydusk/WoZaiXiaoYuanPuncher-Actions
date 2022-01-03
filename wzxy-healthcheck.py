@@ -141,7 +141,6 @@ class WoZaiXiaoYuanPuncher:
     def sendNotification(self):
         notifyTime = utils.getCurrentTime()
         notifyResult = self.getResult()
-        notifySeq = self.getSeq()
 
         # 自己的消息推送
         payload = {
