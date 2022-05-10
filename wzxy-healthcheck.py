@@ -26,7 +26,7 @@ class WoZaiXiaoYuanPuncher:
             "Accept-Language": "en-us,en",
             "Accept": "application/json, text/plain, */*"
         }
-        # 请求体（必须有）
+        # 请求体（必须有
         self.body = "{}"
 
     # 登录
