@@ -94,7 +94,7 @@ class WoZaiXiaoYuanPuncher:
             "province": os.environ['WZXY_PROVINCE'],
             "township": os.environ['WZXY_TOWNSHIP'],
             "street": os.environ['WZXY_STREET'],
-            "city_code": "510100000", 
+            "city_code": "511504101", 
             "timestampHeader": sign_time, 
             "signatureHeader": signature  
         }
@@ -149,23 +149,6 @@ class WoZaiXiaoYuanPuncher:
     def sendNotification(self):
         notifyTime = utils.getCurrentTime()
         notifyResult = self.getResult()
-
-        if(notifyResult == '✅ 打卡成功' or notifyResult == '✅ 你已经打过卡了，无需重复打卡'):
-            # 自己的消息推送
-            payload = {
-                'corpid':'wwb330a036235c91ea',
-                'corpsecret':'bpKk0puHo__K2WM2C4SDxZFRDOfxgFJnvW_vQy6HmhA',
-                'agentid':'1000002',
-                'title':'我在校园健康打卡',
-                'description':f'打卡项目：健康打卡\n\n打卡情况：{notifyResult}\n\n打卡时间：{notifyTime}',
-                'url':'https://github.com/1802024110/WoZaiXiaoYuanPuncher-Actions',
-            }
-            url = 'https://api.htm.fun/api/Wechat/text_card/'
-            requests.request("POST", url, data=payload)
-            print("消息经Server酱推送成功")
-        else:
-            url = f"https://api.007666.xyz//wecom/send/card?corpid=wwb330a036235c91ea&corpsecret=k6qvy2LJTzkXZtS2kED8hnv53-a780Q6cFhWcPnVpnQ&agentid=1000003&content={notifyResult}&title=我在校园健康打卡&url=https://github.com/1802024110/WoZaiXiaoYuanPuncher-Actions"
-            response = requests.request("GET", url)
 
         if os.environ.get('SCT_KEY'):
             # serverchan 推送
